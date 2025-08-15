@@ -32,13 +32,6 @@ canShowContent.value = content.value ? true : isPreviewing(urlPath);
 const getRegisteredComponents = () => {
   return registeredComponents;
 };
-
-// Debug logging
-console.log('Route path:', route.path);
-console.log('URL path:', urlPath);
-console.log('Content found:', !!content.value);
-console.log('Can show content:', canShowContent.value);
-console.log('Is previewing:', isPreviewing(urlPath));
 </script>
 
 <template>
