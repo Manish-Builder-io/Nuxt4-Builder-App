@@ -1,5 +1,5 @@
 <template>
-  <section class="relative bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden">
+  <section class="relative bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden h-screen">
     <!-- Background Pattern -->
     <div class="absolute inset-0">
       <div class="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
