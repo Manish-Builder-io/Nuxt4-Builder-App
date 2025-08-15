@@ -4,6 +4,7 @@ import Header from '~/components/Header.vue'
 import Footer from '~/components/Footer.vue'
 import Hero from '~/components/Hero.vue'
 import Cards from '~/components/Cards.vue'
+import Button from '~/components/Button.vue'
 
 export const registeredComponents = [
   {
@@ -132,6 +133,62 @@ export const registeredComponents = [
       },
       {
         name: 'showLoadMore',
+        type: 'boolean',
+        defaultValue: false,
+      },
+    ],
+  },
+  {
+    component: Button,
+    name: 'Core:Button',
+    override: true,
+    inputs: [
+      {
+        name: 'text',
+        type: 'string',
+        defaultValue: 'Click me',
+      },
+      {
+        name: 'variant',
+        type: 'enum',
+        enum: ['primary', 'secondary', 'outline', 'ghost', 'danger', 'success'],
+        defaultValue: 'primary',
+      },
+      {
+        name: 'size',
+        type: 'enum',
+        enum: ['sm', 'md', 'lg', 'xl'],
+        defaultValue: 'md',
+      },
+      {
+        name: 'disabled',
+        type: 'boolean',
+        defaultValue: false,
+      },
+      {
+        name: 'loading',
+        type: 'boolean',
+        defaultValue: false,
+      },
+      {
+        name: 'fullWidth',
+        type: 'boolean',
+        defaultValue: false,
+      },
+      {
+        name: 'iconBefore',
+        type: 'enum',
+        enum: ['ArrowRightIcon', 'ArrowLeftIcon', 'PlusIcon', 'CheckIcon', 'DownloadIcon', 'ExternalLinkIcon'],
+        defaultValue: null,
+      },
+      {
+        name: 'iconAfter',
+        type: 'enum',
+        enum: ['ArrowRightIcon', 'ArrowLeftIcon', 'PlusIcon', 'CheckIcon', 'DownloadIcon', 'ExternalLinkIcon'],
+        defaultValue: null,
+      },
+      {
+        name: 'rounded',
         type: 'boolean',
         defaultValue: false,
       },
