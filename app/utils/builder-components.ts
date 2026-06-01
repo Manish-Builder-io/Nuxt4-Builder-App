@@ -4,7 +4,23 @@ import Header from '~/components/Header.vue'
 import Footer from '~/components/Footer.vue'
 import Hero from '~/components/Hero.vue'
 import Cards from '~/components/Cards.vue'
-import Button from '~/components/Button.vue'
+import Button from '../components/Button.vue'
+import { register } from '@builder.io/sdk-vue'
+
+if (typeof window !== 'undefined') {
+  register('insertMenu', {
+    name: 'AW Building Blocks',
+    priority: 1,
+    persist: true,
+    items: [
+      { name: 'Header', item: { component: { name: 'Header' } } },
+      { name: 'Footer', item: { component: { name: 'Footer' } } },
+      { name: 'Hero', item: { component: { name: 'Hero' } } },
+      { name: 'Cards', item: { component: { name: 'Cards' } } },
+      { name: 'Button', item: { component: { name: 'Core:Button' } } },
+    ],
+  })
+}
 
 export const registeredComponents = [
   {

@@ -3,6 +3,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss'],
+
+  // Fully client-side rendered — no SSR, no server-side caching
+  ssr: false,
   
   // Ensure proper routing for Builder.io
   experimental: {
