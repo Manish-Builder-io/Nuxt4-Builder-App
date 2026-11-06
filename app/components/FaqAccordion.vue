@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<{
   allowMultipleOpen: false,
   items: () => [
     { question: 'What is a registered component?', answer: '<p>A code component exposed to the Builder visual editor with typed inputs.</p>' },
-    { question: 'Where does the API key come from?', answer: '<p>From <code>NUXT_PUBLIC_BUILDER_API_KEY</code>.</p>' },
+    { question: 'Where does the API key come from?', answer: '<p>From <code>NUXT_BUILDER_API_KEY</code>.</p>' },
   ],
 })
 const open = ref<Set<number>>(new Set())

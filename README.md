@@ -5,12 +5,12 @@ A Nuxt 4 SPA wired to Builder.io (`@builder.io/sdk-vue`) used to reproduce Build
 ## Setup
 
 ```bash
-cp .env.example .env   # then set NUXT_PUBLIC_BUILDER_API_KEY
+cp .env.example .env   # then set NUXT_BUILDER_API_KEY
 npm install
 npm run dev
 ```
 
-All Builder credentials come from the environment (`NUXT_PUBLIC_BUILDER_API_KEY`, surfaced through
+All Builder credentials come from the environment (`NUXT_BUILDER_API_KEY`, surfaced through
 `runtimeConfig.public.builderApiKey` and the `useBuilderConfig()` composable). Nothing is hardcoded.
 To point at a different Builder space, change the env var only (at runtime for `node .output/server/index.mjs`, no rebuild needed).
 
@@ -18,7 +18,7 @@ To point at a different Builder space, change the env var only (at runtime for `
 
 ```bash
 npm run build
-NUXT_PUBLIC_BUILDER_API_KEY=... node .output/server/index.mjs
+NUXT_BUILDER_API_KEY=... node .output/server/index.mjs
 ```
 
 Security headers are set in `nuxt.config.ts` (`routeRules`); framing is limited to `*.builder.io` so the visual editor works.

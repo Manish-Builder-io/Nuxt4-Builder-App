@@ -1,6 +1,6 @@
 /**
  * Single source of truth for Builder.io settings.
- * The API key is read from NUXT_PUBLIC_BUILDER_API_KEY via Nuxt runtimeConfig.
+ * The API key is read from NUXT_BUILDER_API_KEY via Nuxt runtimeConfig.
  */
 export function useBuilderConfig() {
   const config = useRuntimeConfig()
@@ -9,7 +9,7 @@ export function useBuilderConfig() {
 
   if (!apiKey) {
     console.error(
-      '[builder] Missing API key. Set NUXT_PUBLIC_BUILDER_API_KEY in your environment (see .env.example).',
+      '[builder] Missing API key. Set NUXT_BUILDER_API_KEY in your environment (see .env.example).',
     )
   }
 
