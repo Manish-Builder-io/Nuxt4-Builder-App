@@ -5,20 +5,21 @@ A Nuxt 4 SPA wired to Builder.io (`@builder.io/sdk-vue`) used to reproduce Build
 ## Setup
 
 ```bash
-cp .env.example .env   # then set NUXT_PUBLIC_BUILDER_API_KEY
+cp .env.example .env   # then set NUXT_BUILDER_API_KEY
 npm install
 npm run dev
 ```
 
-All Builder credentials come from the environment (`NUXT_PUBLIC_BUILDER_API_KEY`, surfaced through
+All Builder credentials come from the environment (`NUXT_BUILDER_API_KEY`, surfaced through
 `runtimeConfig.public.builderApiKey` and the `useBuilderConfig()` composable). Nothing is hardcoded.
-To point at a different Builder space, change the env var only (at runtime for `node .output/server/index.mjs`, no rebuild needed).
+`NUXT_PUBLIC_BUILDER_API_KEY` is also accepted (Vercel rejects `PUBLIC` in names, hence the alias).
+The app is a client-side SPA, so the key is read **at build time**: after changing it, redeploy/rebuild.
 
 ## Production
 
 ```bash
 npm run build
-NUXT_PUBLIC_BUILDER_API_KEY=... node .output/server/index.mjs
+node .output/server/index.mjs
 ```
 
 Security headers are set in `nuxt.config.ts` (`routeRules`); framing is limited to `*.builder.io` so the visual editor works.
@@ -48,4 +49,4 @@ See https://www.builder.io/c/docs/register-components-options.
 
 1. Add/adjust a component in `app/components` and register it in `builder-components.ts`.
 2. Use `InputShowcase` to inspect what the SDK passes to a component.
-3. `NUXT_PUBLIC_BUILDER_CACHE_SECONDS=0` (default) disables SDK caching so edits show immediately.
+3. `NUXT_BUILDER_CACHE_SECONDS=0` (default) disables SDK caching so edits show immediately.
