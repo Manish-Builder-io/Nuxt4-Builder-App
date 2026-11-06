@@ -28,12 +28,12 @@
           
           <!-- CTA Buttons -->
           <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
+            <a :href="props.primaryButtonUrl" class="inline-block text-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
               {{ props.primaryButtonText }}
-            </button>
-            <button class="border-2 border-gray-300 hover:border-blue-600 text-gray-700 hover:text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200 bg-white hover:bg-gray-50">
+            </a>
+            <a :href="props.secondaryButtonUrl" class="inline-block text-center border-2 border-gray-300 hover:border-blue-600 text-gray-700 hover:text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200 bg-white hover:bg-gray-50">
               {{ props.secondaryButtonText }}
-            </button>
+            </a>
           </div>
 
           <!-- Trust Indicators -->
@@ -134,6 +134,8 @@ const props = defineProps({
     type: String,
     default: 'Watch Demo'
   },
+  primaryButtonUrl: { type: String, default: '#' },
+  secondaryButtonUrl: { type: String, default: '#' },
   showTrustIndicators: {
     type: Boolean,
     default: true

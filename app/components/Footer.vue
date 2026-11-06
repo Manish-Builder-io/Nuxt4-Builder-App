@@ -37,27 +37,13 @@
           </div>
         </div>
 
-        <!-- Quick Links -->
-        <div>
-          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+        <!-- Link groups (editable in Builder) -->
+        <div v-for="(group, gi) in groups" :key="gi">
+          <h3 class="text-lg font-semibold mb-4">{{ group.title }}</h3>
           <ul class="space-y-2">
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Portfolio</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-          </ul>
-        </div>
-
-        <!-- Support -->
-        <div>
-          <h3 class="text-lg font-semibold mb-4">Support</h3>
-          <ul class="space-y-2">
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">API Reference</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Community</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Status</a></li>
+            <li v-for="(link, li) in group.links" :key="li">
+              <a :href="link.url || '#'" class="text-gray-400 hover:text-white transition-colors">{{ link.label }}</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -66,7 +52,7 @@
       <div class="border-t border-gray-800 mt-12 pt-8">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <p class="text-gray-400 text-sm">
-            © 2024 Builder.io. All rights reserved.
+            © {{ new Date().getFullYear() }} {{ props.companyName }}. All rights reserved.
           </p>
           <div class="flex space-x-6 mt-4 md:mt-0">
             <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
@@ -80,6 +66,7 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 const props = defineProps({
   companyName: {
     type: String,
@@ -92,6 +79,21 @@ const props = defineProps({
   showSocialLinks: {
     type: Boolean,
     default: true
+  },
+  linkGroups: {
+    type: Array,
+    default: () => []
   }
 })
+
+const defaultGroups = [
+  { title: 'Quick Links', links: [
+    { label: 'Home', url: '/' }, { label: 'Features', url: '#features' },
+    { label: 'Pricing', url: '#pricing' }, { label: 'FAQ', url: '#faq' } ] },
+  { title: 'Support', links: [
+    { label: 'Help Center', url: 'https://www.builder.io/c/docs' },
+    { label: 'Documentation', url: 'https://www.builder.io/c/docs' },
+    { label: 'Status', url: 'https://status.builder.io' } ] },
+]
+const groups = computed(() => (props.linkGroups?.length ? props.linkGroups : defaultGroups))
 </script>

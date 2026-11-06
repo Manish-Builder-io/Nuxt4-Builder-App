@@ -49,7 +49,6 @@ export function useBuilderDataModelPreview({
       model,
       apiKey,
       callback: (data) => {
-        console.log('[subscribeToEditor] relatedArticle:', JSON.stringify(data?.data?.relatedArticle))
         content.value = data
       },
     })
